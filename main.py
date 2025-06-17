@@ -12,26 +12,26 @@ class MainWindow(QMainWindow):
         self.random_num_dialogs = []
 
         self.setWindowTitle("KotApp")
-        self.setStyleSheet("background-color: #CCDF92;")
+        self.setStyleSheet("background-color: #0B0F64;")
 
         self.title = QLabel("Welcome to KotApp!", self)
         self.title.setGeometry(280, 90, 700, 60)
         self.title.setFont(QFont("Comic Sans MS", 36))
-        self.title.setStyleSheet("color: #387390;")
+        self.title.setStyleSheet("color: #B2B5F5;")
 
-        self.subtitle = QLabel("Made with Love!", self)
+        self.subtitle = QLabel("It's Pointless!", self)
         self.subtitle.setGeometry(455, 160, 700, 40)
         self.subtitle.setFont(QFont("Comic Sans MS", 18))
-        self.subtitle.setStyleSheet("color: #387390;")
+        self.subtitle.setStyleSheet("color: #B2B5F5;")
 
-        self.ver = QLabel("Public Beta 1", self)
+        self.ver = QLabel("Public Beta 2", self)
         self.ver.setGeometry(1770, 1020, 200, 60)
         self.ver.setFont(QFont("Comic Sans MS", 12))
-        self.ver.setStyleSheet("color: #387390")
+        self.ver.setStyleSheet("color: #B2B5F5")
 
         self.img = QLabel(self)
         self.img.setGeometry(50, 50, 200, 200)
-        self.img.setStyleSheet("border: 3px solid #387390;"
+        self.img.setStyleSheet("border: 3px solid #B2B5F5;"
                                "border-radius: 5px;")
 
         self.gif = QMovie("assets/img/kottaniec.gif")
@@ -41,18 +41,18 @@ class MainWindow(QMainWindow):
 
         c_button = QPushButton("Do not click!", self)
         c_button.setGeometry(1660, 50, 150, 50)
-        c_button.setStyleSheet("background-color: #387390; color: #CCDF92; font-size: 18px; font-weight: bold;")
+        c_button.setStyleSheet("background-color: #B2B5F5; color: #0B0F64; font-size: 18px; font-weight: bold;")
         c_button.clicked.connect(self.chaos)
 
         self.m_button = QPushButton("🔊", self)
         self.m_button.setGeometry(1820, 50, 50, 50)
-        self.m_button.setStyleSheet("background-color: #387390; color: #CCDF92; font-size: 18px; font-weight: bold;")
+        self.m_button.setStyleSheet("background-color: #B2B5F5; color: #0B0F64; font-size: 18px; font-weight: bold;")
         self.m_button.clicked.connect(self.music_switch)
 
         self.time_label = QLabel(self)
         self.time_label.setGeometry(50, 920, 550, 110)
         self.time_label.setFont(QFont("Comic Sans MS", 76))
-        self.time_label.setStyleSheet("color: #387390")
+        self.time_label.setStyleSheet("color: #B2B5F5")
 
         self.timer = QTimer(self)
 
@@ -71,7 +71,7 @@ class MainWindow(QMainWindow):
         self.sender().hide()
 
         pygame.mixer.music.stop()
-        pygame.mixer.music.load("assets/audio/virus.mp3")
+        pygame.mixer.music.load("assets/audio/garythargy.mp3")
         pygame.mixer.music.play(-1)
 
         self.gif.stop()
@@ -79,19 +79,12 @@ class MainWindow(QMainWindow):
         self.img.setMovie(self.gif)
         self.gif.start()
 
-        self.setStyleSheet("background-color: black;")
         self.title.setText("not funny bro plz stop")
-        self.subtitle.setText("")
-        self.title.setStyleSheet("color: red;")
-        self.subtitle.setStyleSheet("color: red;")
-        self.m_button.setStyleSheet("background-color: red")
-        self.ver.setStyleSheet("color: red;")
-        self.img.setStyleSheet("border: 3px solid red")
-        self.time_label.setStyleSheet("color: red")
+        self.subtitle.setText("enjoy a bunch of windows now ig")
 
         self.rnum_timer = QTimer(self)
         self.rnum_timer.timeout.connect(self.rnum_spawn)
-        self.rnum_timer.start(100)
+        self.rnum_timer.start(1000)
 
     def music_switch(self):
         if pygame.mixer.music.get_busy():
@@ -124,7 +117,7 @@ class RandomNum(QDialog):
 
 def main():
     pygame.mixer.init()
-    pygame.mixer.music.load("assets/audio/audio.mp3")
+    pygame.mixer.music.load("assets/audio/alone.mp3")
     pygame.mixer.music.play(-1)
 
     app = QApplication(sys.argv)
