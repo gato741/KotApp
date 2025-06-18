@@ -24,7 +24,7 @@ class MainWindow(QMainWindow):
         self.subtitle.setFont(QFont("Comic Sans MS", 18))
         self.subtitle.setStyleSheet("color: #B2B5F5;")
 
-        self.ver = QLabel("Public Beta 2", self)
+        self.ver = QLabel("Public Beta 3", self)
         self.ver.setGeometry(1770, 1020, 200, 60)
         self.ver.setFont(QFont("Comic Sans MS", 12))
         self.ver.setStyleSheet("color: #B2B5F5")
@@ -39,15 +39,25 @@ class MainWindow(QMainWindow):
         self.gif.start()
         self.img.setScaledContents(True)
 
-        c_button = QPushButton("Do not click!", self)
-        c_button.setGeometry(1660, 50, 150, 50)
+        c_button = QPushButton("Window Spammer", self)
+        c_button.setGeometry(1390, 50, 200, 50)
         c_button.setStyleSheet("background-color: #B2B5F5; color: #0B0F64; font-size: 18px; font-weight: bold;")
-        c_button.clicked.connect(self.chaos)
+        c_button.clicked.connect(self.window_spam)
+
+        self.a1_button = QPushButton("Music 1", self)
+        self.a1_button.setGeometry(1600, 50, 100, 50)
+        self.a1_button.setStyleSheet("background-color: #B2B5F5; color: #0B0F64; font-size: 18px; font-weight: bold;")
+        self.a1_button.clicked.connect(self.music_1)
+
+        self.a2_button = QPushButton("Music 2", self)
+        self.a2_button.setGeometry(1710, 50, 100, 50)
+        self.a2_button.setStyleSheet("background-color: #B2B5F5; color: #0B0F64; font-size: 18px; font-weight: bold;")
+        self.a2_button.clicked.connect(self.music_2)
 
         self.m_button = QPushButton("🔊", self)
         self.m_button.setGeometry(1820, 50, 50, 50)
         self.m_button.setStyleSheet("background-color: #B2B5F5; color: #0B0F64; font-size: 18px; font-weight: bold;")
-        self.m_button.clicked.connect(self.music_switch)
+        self.m_button.clicked.connect(self.music_on_off)
 
         self.time_label = QLabel(self)
         self.time_label.setGeometry(50, 920, 550, 110)
@@ -57,7 +67,7 @@ class MainWindow(QMainWindow):
         self.timer = QTimer(self)
 
         self.timer.timeout.connect(self.update_time)
-        self.timer.start(1000)
+        self.timer.start(1)
 
         self.update_time()
 
@@ -67,7 +77,7 @@ class MainWindow(QMainWindow):
         rnum.show()
         self.random_num_dialogs.append(rnum)
 
-    def chaos(self):
+    def window_spam(self):
         self.sender().hide()
 
         pygame.mixer.music.stop()
@@ -84,9 +94,9 @@ class MainWindow(QMainWindow):
 
         self.rnum_timer = QTimer(self)
         self.rnum_timer.timeout.connect(self.rnum_spawn)
-        self.rnum_timer.start(1000)
+        self.rnum_timer.start(500)
 
-    def music_switch(self):
+    def music_on_off(self):
         if pygame.mixer.music.get_busy():
             pygame.mixer.music.pause()
 
@@ -95,6 +105,16 @@ class MainWindow(QMainWindow):
             pygame.mixer.music.unpause()
 
             self.m_button.setText("🔊")
+
+    def music_1(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load("assets/audio/alone.mp3")
+        pygame.mixer.music.play(-1)
+
+    def music_2(self):
+        pygame.mixer.music.stop()
+        pygame.mixer.music.load("assets/audio/tiburtina.mp3")
+        pygame.mixer.music.play(-1)
 
     def update_time(self):
         current_time = QTime.currentTime().toString("hh:mm:ss")
