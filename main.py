@@ -89,8 +89,8 @@ class MainWindow(QMainWindow):
         self.img.setMovie(self.gif)
         self.gif.start()
 
-        self.title.setText("not funny bro plz stop")
-        self.subtitle.setText("enjoy a bunch of windows now ig")
+        self.title.setText("ok")
+        self.subtitle.setText("enjoy a bunch of windows now")
 
         self.rnum_timer = QTimer(self)
         self.rnum_timer.timeout.connect(self.rnum_spawn)
@@ -126,7 +126,7 @@ class RandomNum(QDialog):
         self.setWindowTitle("no")
         self.setGeometry(0, 0, random.randint(50, 300), random.randint(50, 300))
 
-        random_num = random.randint(0, 666)
+        random_num = random.randint(0, 676)
         random_num_str = str(random_num)
 
         label = QLabel(random_num_str, self)
